@@ -46,8 +46,7 @@
             <li> <a href="#"><span id="textoProductos">PRODUCTOS</span></a>
               <div class="dropdown-menu">
                 <ul class="dropdown">
-                  {% for categoria in categoria %}
-                        
+                  {% for categoria in categoria %}  
                       <li><a href="../../home/productos/{{categoria.id}}" title="{{categoria.nombre}}">{{categoria.nombre}}</a></li>
                   {% endfor %}
                 </ul>
@@ -111,19 +110,18 @@
             
            
             
-            <!--
+            
                 <div class="outer-social-in"><div class="social-icon-in">
           <ul>
               
            
-          <li><img src="{#{{asset('bundles/projectadminprincipal/img/social-ico-twi.jpg')}}#}"></li>
+        <!--  <li><img src="{{asset('bundles/projectadminprincipal/img/social-ico-twi.jpg')}}"></li>-->
           
-          <li><img src="{#{{asset('bundles/projectadminprincipal/img/social-ico-fb.jpg')}}#}"></li>
+     <!--     <li><img src="{{asset('bundles/projectadminprincipal/img/social-ico-fb.jpg')}}"></li>-->
 
           </ul>
           </div></div>
         </div>
-    -->
       </div>
 <div class="small-12 small-centered medium-5 medium-uncentered large-5 large-uncentered product-description columns">
   
@@ -202,8 +200,10 @@
 	<br><br><br>
 	</div></div></div>
     <div class="contentborder"></div>
-
+    </div>
     
+
+    <div class="clearing"></div>
 	
     
         {% include "projectAdminprincipalBundle:Layer:footer.html.twig" %}
