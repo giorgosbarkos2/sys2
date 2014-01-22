@@ -37,7 +37,7 @@ class DefaultController extends Controller {
         
         
         
-           $session = $this->getRequest()->getSession();
+        $session = $this->getRequest()->getSession();
         $id = $session->get('calugaId');
         
         
@@ -516,10 +516,9 @@ class DefaultController extends Controller {
         $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $nombre, 'contrasena' => $contrasena));
 
         if ($admin) {
-
             return $this->render('projectAdminloginBundle:Default:principal.html.twig');
         } else {
-            return new Response('No autorizado');
+            return $this->render('projectAdminloginBundle:Default:login.html.twig');
         }
     }
 
@@ -549,8 +548,22 @@ class DefaultController extends Controller {
     }
 
     function vistaFormularioCategoriaAction() {
-        $mensaje = '';
-        return $this->render('projectAdminloginBundle:Default:formularioCategoria.html.twig' , array('mensaje' , $mensaje));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+            $mensaje = '';
+            return $this->render('projectAdminloginBundle:Default:formularioCategoria.html.twig' , array('mensaje' , $mensaje));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+       
     }
 
     function guardarCategoriaAction(Request $data) {
@@ -579,16 +592,42 @@ class DefaultController extends Controller {
     }
 
     public function listarCategoriaAction() {
-        $em = $this->getDoctrine()->getManager();
-        $categoria = $em->getRepository('projectAdminloginBundle:Categoria')->findAll();
-        $mensaje = '';
-        return $this->render('projectAdminloginBundle:Default:listarCategoria.html.twig', array('categoria' => $categoria , 'mensaje' => $mensaje));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+            $categoria = $em->getRepository('projectAdminloginBundle:Categoria')->findAll();
+            $mensaje = '';
+            return $this->render('projectAdminloginBundle:Default:listarCategoria.html.twig', array('categoria' => $categoria , 'mensaje' => $mensaje));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+
     }
 
     public function editarCategoriaAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $categoria = $em->getRepository('projectAdminloginBundle:Categoria')->find($id);
-        return $this->render('projectAdminloginBundle:Default:editarCategoria.html.twig', array('categoria' => $categoria));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           $categoria = $em->getRepository('projectAdminloginBundle:Categoria')->find($id);
+           return $this->render('projectAdminloginBundle:Default:editarCategoria.html.twig', array('categoria' => $categoria));       
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+
     }
 
     public function guardarEditarCategoriaAction(Request $data) {
@@ -631,9 +670,22 @@ class DefaultController extends Controller {
     }
 
     public function vistaFormularioProductoAction() {
-        $em = $this->getDoctrine()->getManager();
-        $categorias = $em->getRepository('projectAdminloginBundle:Categoria')->findAll();
-        return $this->render('projectAdminloginBundle:Default:formularioProductos.html.twig', array('categorias' => $categorias));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           $categorias = $em->getRepository('projectAdminloginBundle:Categoria')->findAll();
+           return $this->render('projectAdminloginBundle:Default:formularioProductos.html.twig', array('categorias' => $categorias));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+
     }
     
 
@@ -688,18 +740,48 @@ class DefaultController extends Controller {
     }
 
     public function listarProductoAction() {
-        $em = $this->getDoctrine()->getManager();
-        $prodcuto = $em->getRepository('projectAdminloginBundle:Producto')->findAll();
-        return $this->render('projectAdminloginBundle:Default:listarProductos.html.twig', array('producto' => $prodcuto));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           $prodcuto = $em->getRepository('projectAdminloginBundle:Producto')->findAll();
+           return $this->render('projectAdminloginBundle:Default:listarProductos.html.twig', array('producto' => $prodcuto));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+        
+        
+        
     }
     
     public function vistaFormularioEditarProductoAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $session = $this->getRequest()->getSession();
-        $session->set('idProducto' , $id);
-        $producto = $em->getRepository('projectAdminloginBundle:Producto')->find($id);
-        $categoria = $em->getRepository('projectAdminloginBundle:Categoria')->findAll();
-        return $this->render('projectAdminloginBundle:Default:editarProducto.html.twig', array('producto'=>$producto, 'categoria'=> $categoria));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           $session->set('idProducto' , $id);
+           $producto = $em->getRepository('projectAdminloginBundle:Producto')->find($id);
+           $categoria = $em->getRepository('projectAdminloginBundle:Categoria')->findAll();
+           return $this->render('projectAdminloginBundle:Default:editarProducto.html.twig', array('producto'=>$producto, 'categoria'=> $categoria));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+        
+        
+        
+        
     }
 
     public function guardarEditarProductoAction(Request $data) {
@@ -759,7 +841,21 @@ class DefaultController extends Controller {
     }
     
     public function vistaFormularioFotoBannerAction(){
-        return $this->render('projectAdminloginBundle:Default:formularioFotoBanner.html.twig');
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           return $this->render('projectAdminloginBundle:Default:formularioFotoBanner.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+        
     }
     
     public function guardarFormularioBannerAction(Request $data) {
@@ -797,19 +893,45 @@ class DefaultController extends Controller {
     }
     
     public function listarBannerAction() {
-        $em = $this->getDoctrine()->getManager();
-        $banner = $em->getRepository('projectAdminloginBundle:Banner')->findAll();
-        $mensaje = '';
-        return $this->render('projectAdminloginBundle:Default:listarBanner.html.twig', array('banner'=>$banner , 'mensaje' => $mensaje));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           $banner = $em->getRepository('projectAdminloginBundle:Banner')->findAll();
+           $mensaje = '';
+           return $this->render('projectAdminloginBundle:Default:listarBanner.html.twig', array('banner'=>$banner , 'mensaje' => $mensaje));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+        
+
     }
     
     public function vistaFormularioEditarBannerAction($id) {
-        $session = $this->getRequest()->getSession();
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+            $session->set('idBanner' , $id);
+            $banner = $em->getRepository('projectAdminloginBundle:Banner')->find($id);
+            return $this->render('projectAdminloginBundle:Default:editarBanner.html.twig', array('banner'=>$banner));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
         
-        $session->set('idBanner' , $id);
-        $em = $this->getDoctrine()->getManager();
-        $banner = $em->getRepository('projectAdminloginBundle:Banner')->find($id);
-        return $this->render('projectAdminloginBundle:Default:editarBanner.html.twig', array('banner'=>$banner));
+
     }
     
     public function eliminarBannerAction(Request $request) {
@@ -853,18 +975,57 @@ class DefaultController extends Controller {
     }
     
     public function uploadImagenAction() {
-        return $this->render('projectAdminloginBundle:Default:formularioUploadImagen.html.twig');
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+            return $this->render('projectAdminloginBundle:Default:formularioUploadImagen.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+        
     }
     
     public function uploadBannerViewAction(){
-        
-        
-         return $this->render('projectAdminloginBundle:Default:uploadBannerImg.html.twig');
-        
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+            return $this->render('projectAdminloginBundle:Default:uploadBannerImg.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
     }
     
     public function vistaFormularioCalugaAction() {
-        return $this->render('projectAdminloginBundle:Default:formularioCaluga.html.twig');
+       
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           return $this->render('projectAdminloginBundle:Default:formularioCaluga.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
+        
     }
     
     public function guardarCalugaAction(Request $data) {
@@ -897,15 +1058,40 @@ class DefaultController extends Controller {
     }
     
     public function listarCalugasAction() {
-        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
         $caluga = $em->getRepository('projectAdminloginBundle:Caluga')->findAll();
         return $this->render('projectAdminloginBundle:Default:listarCaluga.html.twig', array('caluga'=>$caluga));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
     }
     
     public function vistaEditarCalugaAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $caluga = $em->getRepository('projectAdminloginBundle:Caluga')->find($id);
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+                   $caluga = $em->getRepository('projectAdminloginBundle:Caluga')->find($id);
         return $this->render('projectAdminloginBundle:Default:editarCaluga.html.twig', array('caluga'=>$caluga));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
+
     }
     
     public function guardarEditarCalugaAction(Request $data) {
@@ -971,7 +1157,21 @@ class DefaultController extends Controller {
     }
     
     public function vistaFormularioSegundoBannerAction(){
-        return $this->render('projectAdminloginBundle:Default:formularioSegundoBanner.html.twig');
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           return $this->render('projectAdminloginBundle:Default:formularioSegundoBanner.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
+        
     }
     
     public function guardarFormularioSegundoBannerAction(Request $data) {
@@ -998,8 +1198,20 @@ class DefaultController extends Controller {
     }
     
     public function vistaUploadSegundoBannerAction() {
-        return $this->render('projectAdminloginBundle:Default:uploadSegundoBanner.html.twig');
-        
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+          return $this->render('projectAdminloginBundle:Default:uploadSegundoBanner.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
     }
     
     public function uploadSegundoBannerAction() {
@@ -1140,10 +1352,21 @@ class DefaultController extends Controller {
    }
     
    public function listarSegundoBannerAction() {
-       $em  = $this->getDoctrine()->getManager();
-       $segundoBanner = $em->getRepository('projectAdminloginBundle:Banner2')->findAll();
-       return $this->render('projectAdminloginBundle:Default:listarSegundoBanner.html.twig', array('segundobanner'=> $segundoBanner));
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
        
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+               $segundoBanner = $em->getRepository('projectAdminloginBundle:Banner2')->findAll();
+               return $this->render('projectAdminloginBundle:Default:listarSegundoBanner.html.twig', array('segundobanner'=> $segundoBanner));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
    }
    public function eliminarSegundoBannerAction(Request $data) {
         $id = $data->request->get('recordToDelete');
@@ -1155,12 +1378,22 @@ class DefaultController extends Controller {
    }
    
    public function vistaEditarSegundoBannerAction($id) {
-       $em = $this->getDoctrine()->getManager();
        $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
        
-       $session->set('idSegundoBanner', $id);
-       $segundobanner = $em->getRepository('projectAdminloginBundle:Banner2')->find($id);
-       return $this->render('projectAdminloginBundle:Default:editarSegundoBanner.html.twig', array('segundobanner' => $segundobanner));
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+            $session->set('idSegundoBanner', $id);
+            $segundobanner = $em->getRepository('projectAdminloginBundle:Banner2')->find($id);
+            return $this->render('projectAdminloginBundle:Default:editarSegundoBanner.html.twig', array('segundobanner' => $segundobanner));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
    }
    
    public function guardarEditarSegundoBannerAction(Request $data) {
@@ -1185,7 +1418,21 @@ class DefaultController extends Controller {
    }
    
    public function vistaFormularioArticuloAction() {
-       return $this->render('projectAdminloginBundle:Default:formularioArticulo.html.twig');
+       
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           return $this->render('projectAdminloginBundle:Default:formularioArticulo.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
        
    }
    
@@ -1218,7 +1465,21 @@ class DefaultController extends Controller {
    
    
    public function vistaUploadFotoArticuloAction() {
-       return $this->render('projectAdminloginBundle:Default:uploadArticulo.html.twig');
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           return $this->render('projectAdminloginBundle:Default:uploadArticulo.html.twig');
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
+       
    }
    
    public function uploadArticuloAction() {
@@ -1357,9 +1618,22 @@ class DefaultController extends Controller {
    }
    
    public function listarArticulosAction() {
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
        $em = $this->getDoctrine()->getManager();
-       $articulo = $em->getRepository('projectAdminloginBundle:Articulo')->findAll();
-       return $this->render('projectAdminloginBundle:Default:listarArticulo.html.twig', array('articulo' => $articulo));
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+               $articulo = $em->getRepository('projectAdminloginBundle:Articulo')->findAll();
+                return $this->render('projectAdminloginBundle:Default:listarArticulo.html.twig', array('articulo' => $articulo));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }  
+       
    }
    
    public function eliminarArticuloAction(Request $data) {
@@ -1373,9 +1647,21 @@ class DefaultController extends Controller {
    
 
    public function vistaFormularioEditarArticuloAction($id) {
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
        $em = $this->getDoctrine()->getManager();
-       $articulo = $em->getRepository('projectAdminloginBundle:Articulo')->find($id);
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+               $articulo = $em->getRepository('projectAdminloginBundle:Articulo')->find($id);
        return $this->render('projectAdminloginBundle:Default:editarArticulo.html.twig', array('articulo' => $articulo));
+       }else{
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }       
    }
    
    public function guardarEditarArticuloAction(Request $dataarticulo) {
