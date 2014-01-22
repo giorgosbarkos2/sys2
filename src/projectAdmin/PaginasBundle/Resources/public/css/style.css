@@ -122,7 +122,10 @@ margin-top: 20px;
 /*navigation*/
 .navbar {
 	border:0;
-    background-color: #2494F2;
+        
+    background-color: #81DE06;
+    
+    
 	color:#FFF;
 	padding-left: 10px;
     padding-right: 25px;
