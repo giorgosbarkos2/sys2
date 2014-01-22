@@ -97,12 +97,12 @@ $(function() {
             uploader.bind('StateChanged', function() {
                 if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
                     $('form')[0].submit();
-               
+                    alert("Foto cargada.");
                 }
             });
                 
             uploader.start();
-             
+            
       
         } else
             alert('You must at least upload one file.');
