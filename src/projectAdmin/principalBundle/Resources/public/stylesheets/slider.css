@@ -49,6 +49,8 @@ filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5,OffY=5,Color=#a500000
 
 /* FlexSlider Necessary Styles
 *********************************/ 
+
+
 .flexslider {width: 100%; }
 .flexslider .slides > li {display: none;} /* Hide the slides before the JS is loaded. Avoids image jumping */
 .flexslider .slides img {max-width: 100%; display: block; margin: 0 auto; }
@@ -62,14 +64,15 @@ html[xmlns] .slides {display: block;}
 .flexslider .slides > li {position: relative;}
 .flex-container {zoom: 1; position: relative;}
 
+
+
 /* Direction Nav */
 .flex-direction-nav li a {width:45px; font-size:1em; height:42px; background: #fff; color:#000; margin:0; display: block; position: absolute; right:11px; cursor: pointer; text-indent: -9999px;}
-.flex-direction-nav li a.next {background-color:#f65252; background-image:url(../img/slider_next.png); background-position:center; background-repeat:no-repeat; bottom:50%; right:5%; display: none;}
-.flex-direction-nav li a.prev {background-color:#f65252; background-image:url(../img/slider_prev.png); background-position:center; background-repeat:no-repeat; bottom:50%; color:#000; left:0; margin-left:5%; display: none; }
-.flex-direction-nav li a.next:hover {background-color:#34495e; display: none;}
-.flex-direction-nav li a.prev:hover {background-color:#34495e; display: none;}
+.flex-direction-nav li a.next {background-color:#f65252; background-image:url(../img/slider_next.png); background-position:center; background-repeat:no-repeat; bottom:50%; right:5%;}
+.flex-direction-nav li a.prev {background-color:#f65252; background-image:url(../img/slider_prev.png); background-position:center; background-repeat:no-repeat; bottom:50%; color:#000; left:0; margin-left:5%;}
+.flex-direction-nav li a.next:hover {background-color:#34495e;}
+.flex-direction-nav li a.prev:hover {background-color:#34495e;}
 .flex-direction-nav li a.disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}
-
 
 
 
@@ -80,6 +83,7 @@ html[xmlns] .slides {display: block;}
 .flex-control-nav li a {width: 13px; height: 13px; display: block; cursor: pointer; text-indent: -9999px;}
 .flex-control-nav li a:hover {background-position: 0 -13px;}
 .flex-control-nav li a.active {background-position: 0 -26px; cursor: default;}
+
 
 /* Media Queries
 /*-----------------------------------------------------------------------------------*/
