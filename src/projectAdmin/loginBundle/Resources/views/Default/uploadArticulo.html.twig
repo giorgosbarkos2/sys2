@@ -97,21 +97,10 @@ $(function() {
             uploader.bind('StateChanged', function() {
                 if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
                     $('form')[0].submit();
-<<<<<<< HEAD
-                    
-                    
-                             alert('Tu contenido se ha subido exitosamente.');
-                             console.log('opsadjdsapojdsaopdsa');
-               
-=======
-                    alert("Foto cargada.");
->>>>>>> 69ab570cf837b17b9a22a06a70ccfbcdbd274f91
                 }
             });
                 
             uploader.start();
-            
-      
         } else
             alert('You must at least upload one file.');
 

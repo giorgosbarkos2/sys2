@@ -1485,8 +1485,7 @@ class DefaultController extends Controller {
        }else{
            $session->invalidate($admin);
            return $this->render('projectAdminloginBundle:Default:login.html.twig');
-       }  
-       
+       }       
    }
    
    public function uploadArticuloAction() {
