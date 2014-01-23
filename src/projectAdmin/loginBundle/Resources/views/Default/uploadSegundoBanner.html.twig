@@ -102,7 +102,7 @@ $(function() {
             uploader.bind('StateChanged', function() {
                 if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
                     $('form')[0].submit();
-               
+                    alert("Su imagen a sido cargada");
                 }
             });
                 
