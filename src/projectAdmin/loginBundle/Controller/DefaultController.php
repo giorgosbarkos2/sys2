@@ -1723,6 +1723,21 @@ class DefaultController extends Controller {
         return new Response('Foto Eliminada');
    }
    
+   public function logoutAction() {
+       $session = $this->getRequest()->getSession();
+       $usuario = $session->get('nusuario');
+       $password = $session->get('contrasena');
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $usuario, 'contrasena' => $password));
+       
+       if ($admin){
+           $session->invalidate($admin);
+           return $this->render('projectAdminloginBundle:Default:login.html.twig');
+       }
+   }
+   
    
   
 }
