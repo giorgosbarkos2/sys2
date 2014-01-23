@@ -31,8 +31,8 @@
 <br>
 
 
-<button style="margin-top:30px;" onclick="window.location.href='vistaFormularioArticulo'">Agregar Otro Articulo </button>
-<button style="margin-top:30px;" onclick="window.location.href='#'">Agregar Otra imagen </button>
+<button style="margin-top:30px;" class="btn btn-default" onclick="window.location.href='vistaFormularioArticulo'">Agregar Otro Articulo </button>
+<button style="margin-top:30px;"  class="btn btn-default" onclick="window.location.href='#'">Agregar Otra imagen </button>
 <div style="width: 800px; height: 300px; margin-top: -60px;">
 
 
@@ -97,6 +97,10 @@ $(function() {
             uploader.bind('StateChanged', function() {
                 if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
                     $('form')[0].submit();
+                    
+                    
+                             alert('Tu contenido se ha subido exitosamente.');
+                             console.log('opsadjdsapojdsaopdsa');
                
                 }
             });

@@ -179,7 +179,12 @@ class DefaultController extends Controller {
            $em->persist($fotoCaluga);
            $em->persist($caluga);
            $em->flush();
+         
+          $resp ='
+           <script>
+           alert("Tu contenido se ha subido exitosamente");
            
+           </script>';
            
     
             
@@ -187,7 +192,9 @@ class DefaultController extends Controller {
             
         }
         
-          return new Response($fileName);
+        
+        
+          return new Response($resp);
           
           
           

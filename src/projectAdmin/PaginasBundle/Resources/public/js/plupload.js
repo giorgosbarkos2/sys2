@@ -14,6 +14,7 @@
 /*!@@version@@*/
 
 (function() {
+    console.log('probando');
 	var count = 0, runtimes = [], i18n = {}, mimes = {},
 		xmlEncodeChars = {'<' : 'lt', '>' : 'gt', '&' : 'amp', '"' : 'quot', '\'' : '#39'},
 		xmlEncodeRegExp = /[<>&\"\']/g, undef, delay = window.setTimeout,
@@ -963,6 +964,8 @@
 
 			// If we couldn't calculate a total file size then use the number of files to calc percent
 			if (total.size === undef) {
+                            
+                                 
 				total.percent = files.length > 0 ? Math.ceil(total.uploaded / files.length * 100) : 0;
 			} else {
 				total.bytesPerSec = Math.ceil(total.loaded / ((+new Date() - startTime || 1) / 1000.0));
