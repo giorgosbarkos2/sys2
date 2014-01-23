@@ -28,9 +28,19 @@ class DefaultController extends Controller {
     
     
     public function vistaUploadCalugaAction(){
-        
-               return $this->render('projectAdminloginBundle:Default:uploadCaluga.html.twig');
-    }
+        $session = $this->getRequest()->getSession();
+        $nombre = $session->get('nusuario');
+        $contrasena = $session->get('contrasena');
+        $em = $this->getDoctrine()->getManager();
+        $admin = $em->getRepository('projectAdminloginBundle:Usuario')->findOneBy(array('nusuario' => $nombre, 'contrasena' => $contrasena));
+
+        if ($admin) {
+            return $this->render('projectAdminloginBundle:Default:uploadCaluga.html.twig');
+        } else {
+            $session->invalidate($admin);
+            return $this->render('projectAdminloginBundle:Default:login.html.twig');
+        }
+}
     
     
     public function uploadCalugaAction(){
