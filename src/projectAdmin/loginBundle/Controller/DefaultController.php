@@ -1137,9 +1137,9 @@ class DefaultController extends Controller {
     public function eliminarCalugaAction(Request $request) {
         
         $id = $request->request->get('recordToDelete');
-        
         $em = $this->getDoctrine()->getManager(); 
-        $fotocaluga = $em->getRepository('projectAdminloginBundle:FotoCaluga')->find($id);
+        $fotocaluga = $em->getRepository('projectAdminloginBundle:Caluga')->find($id);
+        
         $em->remove($fotocaluga);
         $em->flush();
         return new Response('100');    
@@ -1158,7 +1158,7 @@ class DefaultController extends Controller {
         
         $id = $request->request->get('recordToDelete');
         $em = $this->getDoctrine()->getManager();
-        $fotoCaluga =  $em->getRepository('projectAdminloginBundle:Caluga')->find($id);
+        $fotoCaluga =  $em->getRepository('projectAdminloginBundle:FotoCaluga')->find($id);
         $em->remove($fotoCaluga);
         $em->flush();
         return new Response('Foto Caluga Eliminada');

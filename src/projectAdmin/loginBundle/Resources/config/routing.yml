@@ -146,7 +146,7 @@ eliminarFotoProducto:
     defaults: {_controller: projectAdminloginBundle:Default:eliminarFotoProducto}
 
 eliminarFotoCaluga:
-    pattern: /admin/eliminarFotoCaluga/{id}
+    pattern: /admin/eliminarFotoCaluga
     defaults: {_controller: projectAdminloginBundle:Default:eliminarFotoCaluga}
 
 eliminarFotoBanner:
