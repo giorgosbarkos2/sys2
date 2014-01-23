@@ -533,7 +533,8 @@ padding-left: 32px;
 
 .login-container .block-flat .header{
 	padding: 9px 20px;
-	background:#2494F2;
+        /* 2494F2 */
+	background:#81DE06;
 	border-bottom: 1px solid #2082D5;
 }
 

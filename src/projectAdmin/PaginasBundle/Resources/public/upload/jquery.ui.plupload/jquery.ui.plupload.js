@@ -57,7 +57,7 @@ function renderUI(obj) {
 
 								'<div style="width:50px;height:50px;"><!-- Visible -->' +
                                                                                                                                                 
-									'<button class="boton agregar">' + ('Agregar') + '</button></span> ;' +
+									'<button class="btn btn-primary boton agregar">' + ('Agregar') + '</button></span>' +
 						
 							
 								'</div>' +
