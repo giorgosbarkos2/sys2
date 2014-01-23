@@ -24,11 +24,17 @@
                 <td>{{caluga.idioma}}</td>
                 <td>{{caluga.descripcioncorta}}</td>
                 <td>{{caluga.descripcion}}</td>
-                <td>   <!-- <img src="../caluga/{{caluga.id}}/{{caluga.url}}" style="width:100px;height:100px; margin: auto;"> --> 
-                
-                
-                
-                
+                <td>  
+                    {% if caluga.fotocaluga %}
+                        {% set foto = caluga.fotocaluga %}
+                        {% set contador = 0%}
+                        {% for foto in foto%}
+                            {% set contador = contador + 1 %}
+                            {% if contador <= 1 %}
+                                <img src="../productos/{{caluga.id}}/{{foto.url}}" style="width:100px;height:100px; margin: auto;">
+                            {% endif%}
+                        {% endfor%}
+                    {% endif%}
                 </td>
                 <td> <a href="vistaEditarCaluga/{{caluga.id}}" class="btn btn-primary">Editar</a></td>
                 <td> <button  id="cal-{{caluga.id}}" class="eliminar">Eliminar</button> </td>

@@ -1153,7 +1153,9 @@ class DefaultController extends Controller {
         
     }
     
-    public function eliminarFotoCalugaAction($id){
+    public function eliminarFotoCalugaAction(Request $request){
+        
+        $id = $request->request->get('recordToDelete');
         $em = $this->getDoctrine()->getManager();
         $fotoCaluga =  $em->getRepository('projectAdminloginBundle:Caluga')->find($id);
         $em->remove($fotoCaluga);
