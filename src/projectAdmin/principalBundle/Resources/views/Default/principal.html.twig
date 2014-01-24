@@ -89,7 +89,8 @@
  {% for banner2 in banner2 %}
  {% set cont = cont +1 %}       
         {% if cont <= 1 %}                    
-            </div><img src="segundoBanner/{{banner2.id}}/{{banner2.url}}" alt="ad1">               
+            </div>
+                            <a href="{{banner2.link}}"><img src="segundoBanner/{{banner2.id}}/{{banner2.url}}" alt="ad1">               </a>
           {% endif %}                          
 {% endfor %}                                    
 
