@@ -1,8 +1,9 @@
 {# Formulario agregar segundo banner #}
 {% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
-{% block title %}Agregar Banner{% endblock %}
+{% block title %}Agregar Banner Fijo{% endblock %}
 {% block padre %}<a href="{{path('listarSegundoBanner')}}">Listar Segundo Banner</a>{% endblock %}
-{% block hijo %} Agregar Banner {%endblock%}
+{% block hijo %} Agregar Banner Fijo {%endblock%}
+{% block titulo %} Agregar Banner Fijo {% endblock %}
 {% block contenido %}
 <div class="container well well-sm">
     <form action="{{path('guardarFormularioSegundoBanner')}}" method="POST" class="form-horizontal" rol="form">
