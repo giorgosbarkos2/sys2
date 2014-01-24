@@ -31,6 +31,9 @@
                     {% elseif segundobanner.idioma == "español" %}
                     <option value="ingles" >Ingles</option>
                     <option value="español" selected>Español</option>
+                    {% elseif segundobanner.idioma == " " %}
+                    <option value="ingles" >Ingles</option>
+                    <option value="español" >Español</option>
                     {% endif %}
                 </select>
             </div>
