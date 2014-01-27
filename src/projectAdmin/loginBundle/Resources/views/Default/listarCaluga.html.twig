@@ -31,8 +31,12 @@
                         {% for foto in foto%}
                             {% set contador = contador + 1 %}
                             {% if contador <= 1 %}
-                                <img src="../productos/{{caluga.id}}/{{foto.url}}" style="width:100px;height:100px; margin: auto;">
-                            {% endif%}
+                                   {{foto.url}}
+                                <img src="../caluga/{{caluga.id}}/{{foto.url}}" style="width:100px;height:100px; margin: auto;">
+                                
+                                
+                         
+   {% endif%}
                         {% endfor%}
                     {% endif%}
                 </td>

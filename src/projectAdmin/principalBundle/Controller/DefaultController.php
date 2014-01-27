@@ -220,9 +220,9 @@ class DefaultController extends Controller {
         } else {
 
             $message = \Swift_Message::newInstance()
-                    ->setSubject('Contacto')
-                    ->setFrom('giorgosbarkos@gmail.com')
-                    ->setTo('giorgosbarkos@gmail.com')
+                    ->setSubject('Contacto Peregrin - Workwear')
+                    ->setFrom('contactenos@peregrin.cl')
+                    ->setTo('contactenos@peregrin.cl')
                     ->setBody(
                     $this->renderView(
                             'projectAdminprincipalBundle:Default:contacto.html.twig', array('nombre' => $nombre, 'email' => $email, 'mensaje' => $mesanje)

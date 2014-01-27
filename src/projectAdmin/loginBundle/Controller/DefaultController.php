@@ -1096,6 +1096,8 @@ class DefaultController extends Controller {
        $session = $this->getRequest()->getSession();
        $usuario = $session->get('nusuario');
        $password = $session->get('contrasena');
+       $session->set('calugaId', $id);
+       
        
        $em = $this->getDoctrine()->getManager();
        
@@ -1128,6 +1130,8 @@ class DefaultController extends Controller {
         
         $em->merge($caluga);
         $em->flush();
+        
+     
      
         
         

@@ -58,7 +58,3 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
-swiftmailer:
-    transport: gmail
-    username:  giorgosbarkos@gmail.com  
-    password:  vivi4685
