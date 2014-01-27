@@ -551,6 +551,8 @@ a.cart-remove:hover {
 ul.breadcrumbs {
 	display: block;
 }
+
+
 ul.breadcrumbs li {
 	display: inline-block;
 	margin-right:0.9em;
@@ -560,6 +562,8 @@ ul.breadcrumbs li {
 	line-height: 41px;
 
 }
+
+
 ul.breadcrumbs li a {
 	
 	color:#595959;
@@ -570,15 +574,20 @@ ul.breadcrumbs li a:hover {
 
 /* Main Banner */
 
+
+
 .mainbanner {
 	width: 100%;
 	height: auto;
 	display: inline;
 }
+
+
 .mainbanner > img {
 	margin: 1% 1% 0 0;	
 	vertical-align:top !important;
 }
+
 .main-banner-button a {
 	margin-top:0.5em;
 	display: inline-block;
@@ -602,6 +611,8 @@ ul.breadcrumbs li a:hover {
 	transition: background-color 0.3s;
 	background-color:rgb(255,64,0);
 }
+
+
 
 /* Horizontal Border */
 .contentborder {
