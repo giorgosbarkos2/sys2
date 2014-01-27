@@ -522,9 +522,14 @@ img {
 
 /* line 323, ../../../../Ruby200/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.1/scss/foundation/components/_global.scss */
 img {
-  display: inline-block;
-  vertical-align: middle;
+    
+display: inline-block;
+vertical-align: super;
+
+  
 }
+
+
 
 /* line 333, ../../../../Ruby200/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.1/scss/foundation/components/_global.scss */
 textarea {
