@@ -303,6 +303,7 @@ ul.dropdown li a:hover {
 	text-align:right;
 	text-transform:uppercase;
 	color:rgb(77,90,112); /* text color */
+               display: none;
 }
 
 .searchinputholder::after {
@@ -313,9 +314,10 @@ ul.dropdown li a:hover {
   	height: 26px;
   	z-index: 9999;
   	margin: 0;
+               display: none;
  }
 
-.lan-flag{ float: right; margin: -26px -42px 0 0 ; width: 54px; }
+.lan-flag{ float: right; margin: 5px -42px 0 0; width: 54px; }
 .lan-flag-select{ position: absolute;}
 
 select {
