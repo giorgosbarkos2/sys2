@@ -5,10 +5,7 @@
 <!-- Header -->
 <div class="header">
     <!-- Header top -->
-
-
-
-    {% include "projectAdminprincipalBundle:Layer:headerInt.html.twig" %}
+ {% include "projectAdminprincipalBundle:Layer:headerInt.html.twig" %}
 
     <div class="back-body">
         <div class="back-body-inner">
@@ -255,9 +252,11 @@
                     
                         <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
                         <script type="text/javascript">
-                            $(function() {
+                         
+                        $(function() {
                                 $('select').selectric(); // this function turn all <select> to custom Styling for specific select box use $("#selectbox").selectric(); 
                             });
+                            
                             </script>
                             <script src="{{asset('bundles/projectadminprincipal/javascripts/foundation/foundation.js')}}"></script>
                             <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/nexx.js')}}"></script>
