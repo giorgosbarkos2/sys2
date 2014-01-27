@@ -68,8 +68,10 @@ html[xmlns] .slides {display: block;}
 
 /* Direction Nav */
 .flex-direction-nav li a {width:45px; font-size:1em; height:42px; background: #fff; color:#000; margin:0; display: block; position: absolute; right:11px; cursor: pointer; text-indent: -9999px;}
-.flex-direction-nav li a.next {background-color:#f65252; background-image:url(../img/slider_next.png); background-position:center; background-repeat:no-repeat; bottom:50%; right:5%;}
-.flex-direction-nav li a.prev {background-color:#f65252; background-image:url(../img/slider_prev.png); background-position:center; background-repeat:no-repeat; bottom:50%; color:#000; left:0; margin-left:5%;}
+
+.flex-direction-nav li a.next {background-color:#f65252; background-image:url(../img/slider_next.png); background-position:center; background-repeat:no-repeat; bottom:50%; right:1px;}
+
+.flex-direction-nav li a.prev {background-color:#f65252; background-image:url(../img/slider_prev.png); background-position:center; background-repeat:no-repeat; bottom:50%; color:#000; left:0; margin-left:1px;}
 .flex-direction-nav li a.next:hover {background-color:#34495e;}
 .flex-direction-nav li a.prev:hover {background-color:#34495e;}
 .flex-direction-nav li a.disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}
