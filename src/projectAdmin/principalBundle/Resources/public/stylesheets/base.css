@@ -317,7 +317,7 @@ ul.dropdown li a:hover {
                display: none;
  }
 
-.lan-flag{ float: right; margin: 5px -42px 0 0; width: 54px; }
+.lan-flag{ float: right; margin: 0px -42px 0 0; width: 54px; }
 .lan-flag-select{ position: absolute;}
 
 select {
