@@ -579,6 +579,14 @@ ul.breadcrumbs li a:hover {
 	margin: 1% 1% 0 0;	
 	vertical-align:top !important;
 }
+
+.bannerfijo {
+	width: 265px;
+	height: 350px;
+	display: inline;
+}
+
+
 .main-banner-button a {
 	margin-top:0.5em;
 	display: inline-block;
@@ -1651,6 +1659,7 @@ social-icon > ul li { margin-bottom: 0.1em;}
 
 @media screen and (max-width: 1040px) {
 .mainbanner > img { display: none;}
+.bannerfijo { display: none;}
 .lan-flag {margin-right: 5px;}
 .logo {padding-left: 30px; }
 }

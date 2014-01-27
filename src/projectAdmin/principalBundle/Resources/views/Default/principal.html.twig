@@ -1,4 +1,4 @@
-{% extends "projectAdminprincipalBundle:Layer:base.html.twig" %}
+    {% extends "projectAdminprincipalBundle:Layer:base.html.twig" %}
 {% block title %} Bienvenido a Peregrin {% endblock %}
 {% block body %}
 <div class="header">
@@ -55,28 +55,25 @@
 
                                         
                                            <li>
-                                               
-                                               <a href="{{banner.url}}" target="_blank">
-                            <img src="banner/{{banner.id}}/{{banner.link}}" alt="{{banner.nombre}}" title="{{banner.nombre}}" />
-                        </a>
-	    		<!-- Slide Caption -->
-	    		<div class="flex-caption slideUp">
-	    			<div class="caption-heading">
-	    				{{banner.nombre}} 
-	    			</div>
-	    			<!-- Clear  -->
-	    			<div class="clearing"></div>
-	    			<div class="caption-sub-heading">
-	    				{{banner.piedefoto}}
-	    			</div>
-	    				    			<!-- Button -->
-	    			<div class="clearing"></div>
-	    			<div class="main-banner-button">
+                <img src="banner/{{banner.id}}/{{banner.link}}" alt="{{banner.nombre}}" title="{{banner.nombre}}" /></a>
+                <!-- Slide Caption -->
+                <div class="flex-caption slideUp">
+                    <div class="caption-heading">
+                        {{banner.nombre}} 
+                    </div>
+                    <!-- Clear  -->
+                    <div class="clearing"></div>
+                    <div class="caption-sub-heading">
+                        {{banner.piedefoto}}
+                    </div>
+                                        <!-- Button -->
+                    <div class="clearing"></div>
+                    <div class="main-banner-button">
                                                     <a href="{{banner.url}}" target="_blanck"><span id="textverDetalle"><span class="textVerDetalle">VER DETALLE</span></span></a> </div>
                                             </div>
                     
             
-	    	</li>
+            </li>
 
 
                                         {% endfor %}
@@ -93,7 +90,9 @@
  {% set cont = cont +1 %}       
         {% if cont <= 1 %}                    
             </div>
+                            <div class="bannerfijo">
                             <a href="{{banner2.link}}" target="_blank"><img src="segundoBanner/{{banner2.id}}/{{banner2.url}}" alt="ad1">               </a>
+                            </div>
           {% endif %}                          
 {% endfor %}                                    
 
