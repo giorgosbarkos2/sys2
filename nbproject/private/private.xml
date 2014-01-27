@@ -12,7 +12,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/sysAdmin/src/projectAdmin/loginBundle/Resources/views/Default/formularioCaluga.html.twig</file>
+            <file>file:/var/www/sysAdmin/src/projectAdmin/loginBundle/Resources/views/Default/formularioSegundoBanner.html.twig</file>
+            <file>file:/var/www/sysAdmin/src/projectAdmin/loginBundle/Resources/views/Default/formularioFotoBanner.html.twig</file>
             <file>file:/var/www/sysAdmin/src/projectAdmin/loginBundle/Resources/views/Default/uploadCaluga.html.twig</file>
         </group>
     </open-files>
