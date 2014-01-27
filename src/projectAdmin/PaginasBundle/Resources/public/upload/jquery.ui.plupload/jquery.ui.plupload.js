@@ -559,11 +559,7 @@ $.widget("ui.plupload", {
 
 			if (file.status === plupload.DONE) {
                             
-                             var total =up.total.percent;
-         if(total == 100){
-                                    alert('Tu contenido se ha subido exitosamente');
-                                    
-                                }
+                  
                                         
                                 
 				if (file.target_name) {
@@ -611,7 +607,13 @@ $.widget("ui.plupload", {
 			self.start_button.button('enable');
 		}
 
-
+                
+                           var total =up.total.percent;
+         if(total == 100){
+                                    alert('Tu contenido se ha subido exitosamente');
+                                    
+                                }
+                                
 		// Scroll to end of file list
 		filelist[0].scrollTop = filelist[0].scrollHeight;
 
