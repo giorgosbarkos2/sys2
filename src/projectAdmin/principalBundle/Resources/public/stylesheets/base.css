@@ -1145,7 +1145,7 @@ a.p-compare-link:hover {
 }
 .product-detail-title {
 	display: block;
-	font-family:"Myriad Pro";
+	font-family:"Myriad Pro" !important;
 	font-size:30px;
 	line-height:120%;
 	color:rgb(68,68,68);
@@ -1164,7 +1164,7 @@ a.p-compare-link:hover {
 }
 
 .product-detail-description {
-	font-family: "Myriad Pro";
+	font-family: "Myriad Pro" !important;
 	font-size: 12px;
 	line-height: 120%;
 	color: rgb(68,68,68);
@@ -1172,7 +1172,7 @@ a.p-compare-link:hover {
 
 }
 .product-detail-description-sub {
-	font-family: "Myriad Pro";
+	font-family: "Myriad Pro" !important;
 	font-size: 14px;
 	line-height: 120%;
 	color: rgb(68,68,68);
